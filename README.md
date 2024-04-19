@@ -1,8 +1,10 @@
 # Toxi_IARecognition
 
 ## Installation
-In the shell with root:
+Create a Python virtual environment and download the project dependencies:  
 ```shell
+python3 -m venv IARecognitionEnv
+source IARecognitionEnv/bin/activate
 pip install -r requirements.txt
 ```
 
