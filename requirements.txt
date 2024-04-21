@@ -1,4 +1,3 @@
-cmake
 opencv-python
 requests
 face_recognition
