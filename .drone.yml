@@ -38,7 +38,7 @@ steps:
       sonar.sources: .
       sonar.host.url: https://codefirst.iut.uca.fr/sonar/
     commands:
-      - sonar-scanner -Dsonar.host.url=https://codefirst.iut.uca.fr/sonar/
+      - sonar-scanner -X -D sonar.projectKey=toxiAIRecognition -D sonar.host.url=https://codefirst.iut.uca.fr/sonar
     # depends_on: [test]
 
 # ---
