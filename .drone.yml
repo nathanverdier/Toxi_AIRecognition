@@ -36,7 +36,7 @@ steps:
       sonar_token:
         from_secrets: Login_Sonar_Toxi_AIRecognition
     commands:
-      - sonar-scanner -X -D sonar.projectKey=toxiAIRecognition -D sonar.host.url=
+      - sonar-scanner -X -D sonar.projectKey=toxiAIRecognition -D sonar.host.url=$${sonar_host}
     # depends_on: [test]
 
 # ---
