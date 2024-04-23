@@ -28,18 +28,18 @@ steps:
   #     - npm test
   #   depends_on: [build]
 
-  # - name: code-inspection_sonar
-  #   image: 
-  #   secrets: [  ]
-  #   settings:
-  #     sonar_project_key: Toxi_AIRecognition
-  #     sonar_host: https://codefirst.iut.uca.fr/sonar/
-  #     sonar_token:
-  #       from_secret: 
-  #   commands:
-  #     - npm install -g sonarqube-scanner
-  #     - sonar-scanner
-  #   depends_on: [test]
+  - name: code-inspection_sonar
+    image: sonarsource/sonar-scanner-cli
+    environment:
+      SONAR_TOKEN:
+        from_secret: Login_Sonar_Toxi_API
+    settings:
+      sonar.projectKey: Toxi_AIRecognition
+      sonar.sources: .
+      sonar.host.url: https://codefirst.iut.uca.fr/sonar/
+    commands:
+      - sonar-scanner
+    # depends_on: [test]
 
 # ---
 
