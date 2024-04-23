@@ -29,7 +29,7 @@ steps:
   #   depends_on: [build]
 
   - name: code-inspection_sonar
-    image: sonarsource/sonar-scanner-cli
+    image: python:3.8
     environment:
       SONAR_TOKEN:
         from_secret: Login_Sonar_Toxi_API
