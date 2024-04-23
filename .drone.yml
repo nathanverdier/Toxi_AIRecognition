@@ -7,20 +7,20 @@ trigger:
     - push
 
 steps:
-  - name: get-images
-    image: python:3.8
-    commands:
-      - apt-get update
-      - apt-get install -y cmake
-      - pip install -r requirements.txt
-      - python getImagesApi.py
+  # - name: get-images
+  #   image: python:3.8
+  #   commands:
+  #     - apt-get update
+  #     - apt-get install -y cmake
+  #     - pip install -r requirements.txt
+  #     - python getImagesApi.py
 
-  - name: build
-    image: python:3.8
-    commands:
-      - cd codeIA
-      - python3 mainIA.py Images/Remi.jpg
-    depends_on: [get-images]
+  # - name: build
+  #   image: python:3.8
+  #   commands:
+  #     - cd codeIA
+  #     - python3 mainIA.py Images/Remi.jpg
+  #   depends_on: [get-images]
 
   # - name: test
   #   image: python:3.8
