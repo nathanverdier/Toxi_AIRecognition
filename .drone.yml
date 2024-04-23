@@ -29,7 +29,7 @@ steps:
   #   depends_on: [build]
 
   - name: code-inspection_sonar
-    image: python:3.8
+    image: sonarsource/sonar-scanner-cli
     environment:
       SONAR_TOKEN:
         from_secret: Login_Sonar_Toxi_API
@@ -38,7 +38,8 @@ steps:
       sonar.sources: .
       sonar.host.url: https://codefirst.iut.uca.fr/sonar/
     commands:
-      - sonar-scanner
+      - ping codefirst.iut.uca.fr
+      - sonar-scanner -Dsonar.host.url=https://codefirst.iut.uca.fr/sonar/
     # depends_on: [test]
 
 # ---
