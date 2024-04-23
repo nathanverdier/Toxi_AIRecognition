@@ -29,14 +29,14 @@ steps:
   #   depends_on: [build]
 
   - name: code-inspection_sonar
-    image: python:3.8
+    image: sonarsource/sonar-scanner-cli
     secrets: [ Login_Sonar_Toxi_AIRecognition ]
     settings:
       sonar_host: https://codefirst.iut.uca.fr/sonar/
       sonar_token:
         from_secrets: Login_Sonar_Toxi_AIRecognition
     commands:
-      - sonar-scanner -X -D sonar.projectKey=toxiAIRecognition -D sonar.host.url=$${PLUGIN_SONAR_HOST}
+      - sonar-scanner -X -D sonar.projectKey=toxiAIRecognition -D sonar.host.url=
     # depends_on: [test]
 
 # ---
