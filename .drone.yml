@@ -38,7 +38,6 @@ steps:
       sonar.sources: .
       sonar.host.url: https://codefirst.iut.uca.fr/sonar/
     commands:
-      - ping codefirst.iut.uca.fr
       - sonar-scanner -Dsonar.host.url=https://codefirst.iut.uca.fr/sonar/
     # depends_on: [test]
 
