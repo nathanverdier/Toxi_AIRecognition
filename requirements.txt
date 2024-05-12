@@ -1,3 +1,4 @@
 opencv-python
 requests
 face_recognition
+flask
