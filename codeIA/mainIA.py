@@ -33,7 +33,7 @@ sfr.load_encoding_images("./Images/")
 #     print("Données reçues de l'API :", data)
 
 #     # Récupérer le tableau de bytes de l'API
-#     # image_bytes = bytes.fromhex(data["image"])  # Supposons que les données bytes sont dans la clé "image_data"
+#     # image_bytes = bytes.fromhex(data["image"]) 
 
 #     # # Convertir les bytes en un tableau NumPy
 #     # nparr = np.frombuffer(image_bytes, np.uint8)
