@@ -60,15 +60,15 @@ trigger:
     - push
 
 
-# steps:
-#   - name: docker-build-and-push
-#     image: plugins/docker
-#     settings:
-#        dockerfile: Dockerfile
-#        context: .
-#        registry: hub.codefirst.iut.uca.fr
-#        repo: hub.codefirst.iut.uca.fr/nathan.verdier/toxic-api
-#        username:
-#          from_secret: 
-#        password:
-#          from_secret: 
+steps:
+  - name: docker-build-and-push
+    image: plugins/docker
+    settings:
+       dockerfile: Dockerfile
+       context: .
+       registry: hub.codefirst.iut.uca.fr
+       repo: hub.codefirst.iut.uca.fr/toxiteam/toxi-iarecognition
+       username:
+         from_secret: SECRET_REGISTRY_USERNAME
+       password:
+         from_secret: SECRET_REGISTRY_PASSWORD
