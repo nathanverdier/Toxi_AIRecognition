@@ -59,7 +59,6 @@ trigger:
   event:
     - push
 
-
 steps:
   - name: docker-build-and-push
     image: plugins/docker
@@ -72,3 +71,14 @@ steps:
          from_secret: SECRET_REGISTRY_USERNAME
        password:
          from_secret: SECRET_REGISTRY_PASSWORD
+
+  - name: deploy-container
+    image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-dockerproxy-clientdrone:latest
+    environment:
+      IMAGENAME: hub.codefirst.iut.uca.fr/toxiteam/toxi-iarecognition:latest
+      CONTAINERNAME: toxi-iarecognition
+      COMMAND: create
+      OVERWRITE: true
+      ADMINS: naverdier, lubedouret, chmourgand
+      CODEFIRST_CLIENTDRONE_ENV_API_BASEURL: http://toxi-iarecognition.net/
+    depends_on: [ docker-build-and-push ]
