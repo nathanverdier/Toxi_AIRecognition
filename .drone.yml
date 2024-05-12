@@ -49,15 +49,15 @@ steps:
 
 # ---
 
-# kind: pipeline
-# type: docker
-# name: CI_Toxi_IARecognition
+kind: pipeline
+type: docker
+name: CD_Toxi_IARecognition
 
-# trigger:
-#   branch:
-#     - master
-#   event:
-#     - push
+trigger:
+  branch:
+    - master
+  event:
+    - push
 
 
 # steps:
