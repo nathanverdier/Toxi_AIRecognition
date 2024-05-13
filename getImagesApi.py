@@ -5,7 +5,7 @@ import base64
 url = "http://localhost:8081/v1/person"
 
 headers = {
-    "Authorization": "Bearer <toekn>"
+    "Authorization": "Bearer <token>"
 }
 
 response = requests.get(url, headers=headers)
