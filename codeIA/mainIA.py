@@ -34,9 +34,11 @@ def detect_faces():
     
     face_locations = face_locations.tolist()
 
+    face_locations_named = [{'y1': loc[0], 'x2': loc[1], 'y2': loc[2], 'x1': loc[3]} for loc in face_locations]
+
     # Créer une réponse
     response = {
-        'face_locations': face_locations,
+        'face_locations': face_locations_named,
         'face_names': face_names,
     }
 
