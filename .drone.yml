@@ -78,6 +78,6 @@ steps:
       CONTAINERNAME: toxi-iarecognition
       COMMAND: create
       OVERWRITE: true
-      ADMINS: naverdier, lubedouret, chmourgand
+      ADMINS: nathanverdier,luciebedouret,chloemourgand
       CODEFIRST_CLIENTDRONE_ENV_API_BASEURL: http://toxi-iarecognition.net/
     depends_on: [ docker-build-and-push ]
