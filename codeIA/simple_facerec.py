@@ -65,3 +65,15 @@ class SimpleFacerec:
         face_locations = np.array(face_locations)
         face_locations = face_locations / self.frame_resizing
         return face_locations.astype(int), face_names
+
+    def detect_faces(self, frame):
+        small_frame = cv2.resize(frame, (0, 0), fx=self.frame_resizing, fy=self.frame_resizing)
+
+        # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
+        rgb_small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
+        face_locations = face_recognition.face_locations(rgb_small_frame)
+
+        # Convert to array to quickly adjust coordinates with frame resizing
+        face_locations = np.array(face_locations)
+        face_locations = face_locations / self.frame_resizing
+        return face_locations.astype(int)
