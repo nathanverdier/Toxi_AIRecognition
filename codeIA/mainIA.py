@@ -34,12 +34,35 @@ def detect_faces():
     
     face_locations = face_locations.tolist()
 
-    face_locations_named = [{'y1': loc[0], 'x2': loc[1], 'y2': loc[2], 'x1': loc[3]} for loc in face_locations]
+    face_locations_named = [{'x1': loc[3], 'x2': loc[1], 'y1': loc[0], 'y2': loc[2]} for loc in face_locations]
 
     # Créer une réponse
     response = {
         'face_locations': face_locations_named,
         'face_names': face_names,
+    }
+
+    return jsonify(response)
+
+@app.route('/detect_only_faces', methods=['POST'])
+def detect_only_faces():
+    
+    image_file = request.files.get('image')
+    if not image_file:
+        return jsonify({'error': 'No image file provided'}), 400
+
+    image = cv2.imdecode(np.frombuffer(image_file.read(), np.uint8), cv2.IMREAD_UNCHANGED)
+
+    # Détecter les visages
+    face_locations = sfr.detect_faces(image)
+    
+    face_locations = face_locations.tolist()
+
+    face_locations_named = [{'x1': loc[3], 'x2': loc[1], 'y1': loc[0], 'y2': loc[2]} for loc in face_locations]
+
+    # Créer une réponse
+    response = {
+        'face_locations': face_locations_named,
     }
 
     return jsonify(response)
