@@ -20,6 +20,8 @@ RUN pip install face_recognition
 
 RUN pip install requests
 
+RUN pip install Flask
+
 EXPOSE 80
 
 CMD ["python", "mainIA.py"]
