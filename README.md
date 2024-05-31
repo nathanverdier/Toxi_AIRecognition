@@ -1,10 +1,10 @@
-# Toxi_IARecognition
+# Toxi_AIRecognition
 
 ## Installation
 Create a Python virtual environment and download the project dependencies:  
 ```shell
-python3 -m venv IARecognitionEnv
-source IARecognitionEnv/bin/activate
+python3 -m venv AIRecognitionEnv
+source AIRecognitionEnv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -14,6 +14,6 @@ Retrieve the images that detect people from the API `getImagesApi.py` then put t
 ## Run the script
 ```shell
 python3 getImagesApi.py
-cd codeIA
+cd codeAI
 python3 mainIA.py Images/Remi.jpg
 ```
