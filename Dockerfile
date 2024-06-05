@@ -24,4 +24,4 @@ RUN pip install Flask
 
 EXPOSE 80
 
-CMD ["python", "mainIA.py"]
+CMD ["python", "mainAI.py"]
