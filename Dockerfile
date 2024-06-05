@@ -2,7 +2,7 @@ from python:latest
 
 WORKDIR /app
 
-COPY codeIA /app
+COPY codeAI /app
 
 RUN pip install --upgrade pip
 
