@@ -2,6 +2,7 @@ import cv2
 import sys
 import numpy as np
 import requests
+import base64
 import os
 from simple_facerec import SimpleFacerec
 from flask import Flask, request, jsonify
@@ -66,6 +67,22 @@ def detect_only_faces():
     }
 
     return jsonify(response)
+
+@app.route('/add_person', methods=['POST'])
+def add_person():
+    person = request.json
+    if not person or 'image' not in person or 'name' not in person:
+        return jsonify({'error': 'No person object provided or missing fields'}), 400
+
+    image_data = base64.b64decode(person['image'])
+    image_path = os.path.join('./Images', f"{person['name']}.jpg")
+
+    with open(image_path, 'wb') as f:
+        f.write(image_data)
+
+    sfr.load_encoding_images("./Images/")
+    
+    return jsonify({'message': 'Person added and images re-encoded successfully'}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
