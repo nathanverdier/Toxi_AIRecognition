@@ -2,10 +2,15 @@ import requests
 import os
 import base64
 
-url = "http://localhost:8081/v1/person"
+from getToken import getToken
+
+token_getter = getToken()
+token = token_getter.get_token()
+
+url = "https://codefirst.iut.uca.fr/containers/ToxiTeam-toxi-api"
 
 headers = {
-    "Authorization": "Bearer <token>"
+    "Authorization": "Bearer " + token,
 }
 
 response = requests.get(url, headers=headers)
