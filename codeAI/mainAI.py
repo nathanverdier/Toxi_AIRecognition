@@ -77,6 +77,8 @@ def add_person():
     image_data = base64.b64decode(person['image'])
     image_path = os.path.join('./Images', f"{person['name']}.jpg")
 
+    os.makedirs(os.path.dirname(image_path), exist_ok=True)
+
     with open(image_path, 'wb') as f:
         f.write(image_data)
 
