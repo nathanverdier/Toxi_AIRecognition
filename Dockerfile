@@ -5,6 +5,7 @@ WORKDIR /app
 EXPOSE 80
 
 COPY codeAI /app
+COPY getToken.py /app
 COPY getImagesApi.py /app
 COPY requirements.txt /app
 
