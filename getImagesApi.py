@@ -7,7 +7,7 @@ from getToken import getToken
 token_getter = getToken()
 token = token_getter.get_token()
 
-url = "https://codefirst.iut.uca.fr/containers/ToxiTeam-toxi-api"
+url = "https://codefirst.iut.uca.fr/containers/ToxiTeam-toxi-api/v1/person"
 
 headers = {
     "Authorization": "Bearer " + token,
