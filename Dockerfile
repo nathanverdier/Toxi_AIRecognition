@@ -5,7 +5,7 @@ WORKDIR /app
 EXPOSE 80
 
 COPY codeAI /app
-COPY getImages.py /app
+COPY getImagesApi.py /app
 COPY requirements.txt /app
 
 RUN pip install --upgrade pip
@@ -18,6 +18,6 @@ RUN apt-get update && \
 
 RUN pip install -r requirements.txt
 
-RUN python3 getImages.py
+RUN python3 getImagesApi.py
 
 CMD ["python3", "mainAI.py"]
