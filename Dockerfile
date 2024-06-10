@@ -24,4 +24,6 @@ RUN pip install Flask
 
 EXPOSE 80
 
-CMD ["python", "mainAI.py"]
+RUN python3 getImages.py
+
+CMD ["python3", "mainAI.py"]
