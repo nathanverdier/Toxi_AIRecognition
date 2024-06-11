@@ -20,7 +20,7 @@ if response.status_code == 200:
     for item in data:
         if 'image' in item and 'name' in item:
             img_data = base64.b64decode(item['image'])
-            image_path = f'codeIA/Images/{item["name"]}.jpg'
+            image_path = f'codeAI/Images/{item["name"]}.jpg'
             os.makedirs(os.path.dirname(image_path), exist_ok=True)
             with open(image_path, 'wb') as f:
                 f.write(img_data)
