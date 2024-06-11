@@ -25,11 +25,11 @@ app = Flask(__name__)
 @app.route('/detect_faces', methods=['POST'])
 def detect_faces():
     
-    image_file = request.files.get('image')
-    if not image_file:
-        return jsonify({'error': 'No image file provided'}), 400
+    image_bytes = request.data
+    if not image_bytes:
+        return jsonify({'error': 'No image data provided'}), 400
 
-    image = cv2.imdecode(np.frombuffer(image_file.read(), np.uint8), cv2.IMREAD_UNCHANGED)
+    image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_UNCHANGED)
 
     # Détecter les visages
     face_locations, face_names = sfr.detect_known_faces(image)
@@ -49,11 +49,11 @@ def detect_faces():
 @app.route('/detect_only_faces', methods=['POST'])
 def detect_only_faces():
     
-    image_file = request.files.get('image')
-    if not image_file:
-        return jsonify({'error': 'No image file provided'}), 400
+    image_bytes = request.data
+    if not image_bytes:
+        return jsonify({'error': 'No image data provided'}), 400
 
-    image = cv2.imdecode(np.frombuffer(image_file.read(), np.uint8), cv2.IMREAD_UNCHANGED)
+    image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_UNCHANGED)
 
     # Détecter les visages
     face_locations = sfr.detect_faces(image)
