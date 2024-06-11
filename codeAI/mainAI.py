@@ -11,10 +11,10 @@ import logging
 # Vérifiez que le dossier Images existe et contient des fichiers
 if not os.path.exists("./Images/") or not os.listdir("./Images/"):
     print("The pictures folder is empty or does not exist.")
-    sys.exit(1)
 
-sfr = SimpleFacerec()
-sfr.load_encoding_images("./Images/")
+else:
+    sfr = SimpleFacerec()
+    sfr.load_encoding_images("./Images/")
 
 app = Flask(__name__)
 
