@@ -89,8 +89,11 @@ def add_person():
     
     return jsonify({'message': 'Person added and images re-encoded successfully'}), 200
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8081)
+if __name__ == "__main__":
+    host = os.getenv('HOST', '0.0.0.0')
+    port = int(os.getenv('PORT', '5000'))
+    logging.info("Starting the ai...")
+    app.run(host=host, port=port)
 # Read the image from a file
 # image_path = sys.argv[1]  # Get the image path from command line arguments
 # frame = cv2.imread(image_path)
