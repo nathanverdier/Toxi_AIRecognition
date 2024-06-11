@@ -6,6 +6,7 @@ import base64
 import os
 from simple_facerec import SimpleFacerec
 from flask import Flask, request, jsonify
+import logging
 
 # Vérifiez que le dossier Images existe et contient des fichiers
 if not os.path.exists("./Images/") or not os.listdir("./Images/"):
@@ -83,6 +84,8 @@ def add_person():
         f.write(image_data)
 
     sfr.load_encoding_images("./Images/")
+    
+    logging.info(f"Person {person['name']} added and images re-encoded successfully")
     
     return jsonify({'message': 'Person added and images re-encoded successfully'}), 200
 
