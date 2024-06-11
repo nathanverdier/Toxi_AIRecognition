@@ -17,8 +17,8 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y cmake build-essential libopencv-dev libopenblas-dev liblapack-dev libx11-dev libgtk-3-dev
 
-RUN pip install -r requirements.txt
+RUN pip install -r --no-cache-dir requirements.txt
 
-# RUN python3 getImagesApi.py
+RUN python3 getImagesApi.py
 
-CMD ["python3", "mainAI.py"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000" "app:mainAI"]
