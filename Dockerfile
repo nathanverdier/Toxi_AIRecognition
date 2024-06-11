@@ -19,6 +19,6 @@ RUN apt-get update && \
 
 RUN pip install -r requirements.txt
 
-RUN python3 getImagesApi.py
+# RUN python3 getImagesApi.py
 
 CMD ["python3", "mainAI.py"]
