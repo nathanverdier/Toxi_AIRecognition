@@ -8,12 +8,13 @@ from simple_facerec import SimpleFacerec
 from flask import Flask, request, jsonify
 import logging
 
+sfr = SimpleFacerec()
+
 # Vérifiez que le dossier Images existe et contient des fichiers
 if not os.path.exists("./Images/") or not os.listdir("./Images/"):
     print("The pictures folder is empty or does not exist.")
 
 else:
-    sfr = SimpleFacerec()
     sfr.load_encoding_images("./Images/")
 
 app = Flask(__name__)
