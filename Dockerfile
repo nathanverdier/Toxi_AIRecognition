@@ -21,4 +21,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 RUN python3 getImagesApi.py
 
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:80" "mainAI:app"]
+CMD [ "gunicorn", "-w", "4", "-b", "0.0.0.0:80", "mainAI:app" ]
