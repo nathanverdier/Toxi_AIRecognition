@@ -33,6 +33,8 @@ steps:
     environment:
       SONAR_TOKEN:
         from_secret: Login_Sonar_Toxi_AIRecognition
+      CODEFIRST_CLIENTDRONE_ENV_PORT: 8081
+      CODEFIRST_CLIENTDRONE_ENV_HOST: "0.0.0.0"
     settings:
       sources: .
     commands:
@@ -78,6 +80,8 @@ steps:
       CONTAINERNAME: toxi-iarecognition
       COMMAND: create
       OVERWRITE: true
+      CODEFIRST_CLIENTDRONE_ENV_PORT: 8081
+      CODEFIRST_CLIENTDRONE_ENV_HOST: "0.0.0.0"
       ADMINS: nathanverdier,luciebedouret,chloemourgand
       CODEFIRST_CLIENTDRONE_ENV_API_BASEURL: http://toxi-iarecognition.net/
     depends_on: [ docker-build-and-push ]
