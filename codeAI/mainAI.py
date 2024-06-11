@@ -36,7 +36,7 @@ def detect_faces():
     face_locations, face_names = sfr.detect_known_faces(image)
 
     # Vérifier si des visages ont été détectés
-    if not face_locations and not face_names:
+    if face_locations.any() or face_names.any():
         return jsonify({'error': 'No faces detected'}), 400
 
     face_locations = face_locations.tolist()
