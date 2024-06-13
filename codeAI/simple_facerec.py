@@ -47,19 +47,18 @@ class SimpleFacerec:
         face_locations = face_recognition.face_locations(rgb_small_frame)
         face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
 
-        # Dans simple_facerec.py, dans la fonction detect_known_faces
         face_names = []
         for face_encoding in face_encodings:
+            
             # Check if the face matches the known face(s)
             matches = face_recognition.compare_faces(self.known_face_encodings, face_encoding)
             name = "Unknow"
 
             # Or rather, use the known face with the smallest distance from the new face or the highest match percentage
             face_distances = face_recognition.face_distance(self.known_face_encodings, face_encoding)
-            if len(face_distances) > 0:
-                best_match_index = np.argmin(face_distances)
-                if matches[best_match_index]:
-                    name = self.known_face_names[best_match_index]
+            best_match_index = np.argmin(face_distances)
+            if matches[best_match_index]:
+                name = self.known_face_names[best_match_index]
             face_names.append(name)
 
         # Convert to array to quickly adjust coordinates with frame resizinge
