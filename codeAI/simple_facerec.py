@@ -56,9 +56,10 @@ class SimpleFacerec:
 
             # Or rather, use the known face with the smallest distance from the new face or the highest match percentage
             face_distances = face_recognition.face_distance(self.known_face_encodings, face_encoding)
-            best_match_index = np.argmin(face_distances)
-            if matches[best_match_index]:
-                name = self.known_face_names[best_match_index]
+            if face_distances.size > 0:
+                best_match_index = np.argmin(face_distances)
+                if matches[best_match_index]:
+                    name = self.known_face_names[best_match_index]
             face_names.append(name)
 
         # Convert to array to quickly adjust coordinates with frame resizinge
