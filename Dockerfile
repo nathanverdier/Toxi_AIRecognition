@@ -8,21 +8,14 @@ COPY codeAI /app
 COPY getToken.py /app
 COPY getImagesApi.py /app
 COPY requirements.txt /app
+COPY start.sh /app
 
-RUN pip install --upgrade pip
+RUN pip install --upgrade pip && \
+    apt-get update && \
+    apt-get install -y libgl1-mesa-glx cmake build-essential libopencv-dev libopenblas-dev liblapack-dev libx11-dev libgtk-3-dev && \
+    pip install --no-cache-dir -r requirements.txt && \
+    pip install gunicorn
 
-RUN apt-get update && \
-    apt-get install -y libgl1-mesa-glx
+RUN chmod +x /app/start.sh
 
-RUN apt-get update && \
-    apt-get install -y cmake build-essential libopencv-dev libopenblas-dev liblapack-dev libx11-dev libgtk-3-dev
-
-RUN pip install --no-cache-dir -r requirements.txt
-
-RUN pip install gunicorn
-
-RUN python3 getImagesApi.py
-
-RUN echo $PATH
-
-CMD [ "gunicorn", "-w", "4", "-b", "0.0.0.0:80", "mainAI:app" ]
+ENTRYPOINT ["/app/start.sh"]
