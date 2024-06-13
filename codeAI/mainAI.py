@@ -59,16 +59,25 @@ def detect_faces():
 
 @app.route('/detect_only_faces', methods=['POST'])
 def detect_only_faces():
-    
-    image_bytes = request.data
-    if not image_bytes:
-        return jsonify({'error': 'No image data provided'}), 400
+    # Vérifier si un fichier a été envoyé
+    if 'image' not in request.files:
+        return jsonify({'error': 'No image file provided'}), 400
 
-    image = cv2.imdecode(np.frombuffer(image_bytes, np.uint8), cv2.IMREAD_UNCHANGED)
+    file = request.files['image']
+
+    # Vérifier si le fichier n'est pas vide
+    if file.filename == '':
+        return jsonify({'error': 'No image selected for uploading'}), 400
+
+    # Lire l'image en utilisant OpenCV
+    image = cv2.imdecode(np.frombuffer(file.read(), np.uint8), cv2.IMREAD_UNCHANGED)
 
     # Détecter les visages
     face_locations = sfr.detect_faces(image)
     
+    if len(face_locations) == 0:
+        return jsonify({'error': 'No faces detected'}), 400
+
     face_locations = face_locations.tolist()
 
     face_locations_named = [{'x1': loc[3], 'x2': loc[1], 'y1': loc[0], 'y2': loc[2]} for loc in face_locations]
