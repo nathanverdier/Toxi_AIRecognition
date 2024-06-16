@@ -88,4 +88,3 @@ steps:
       CODEFIRST_CLIENTDRONE_ENV_API_BASEURL: http://toxi-iarecognition.net/
     depends_on: [ docker-build-and-push ]
     
-    
