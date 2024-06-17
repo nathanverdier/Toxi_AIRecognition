@@ -43,7 +43,7 @@ def detect_faces():
 
     # Vérifier si des visages ont été détectés
     if len(face_locations) == 0:
-        return jsonify({'error': 'No faces detected'}), 400
+        return jsonify({'error': 'No faces detected'}), 200
 
     face_locations = face_locations.tolist()
 
@@ -76,7 +76,7 @@ def detect_only_faces():
     face_locations = sfr.detect_faces(image)
     
     if len(face_locations) == 0:
-        return jsonify({'error': 'No faces detected'}), 400
+        return jsonify({'error': 'No faces detected'}), 200
 
     face_locations = face_locations.tolist()
 
